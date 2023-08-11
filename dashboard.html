@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyWise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/cqc3agw.css">
+</head>
+
+<body>
+    <main>
+        <div class="left-grid">
+            <a class="logo-type" href="#">MoneyWise</a>
+            <nav class="menu" id="menuForm">
+                <div class="menu-item">
+                    <div class="cta">
+                        <button id="topLine"></button>
+                    </div>
+                    <div class="label" id="lableTitle"> Add Transaction</div>
+                    <label for="category" class="tsc-label">Category</label>
+                    <select id="category" name="category">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                    <label for="amount" class="tsc-label">Amount</label>
+                    <input type="text" name="amount" placeholder="Amount">
+                    <label for="detail" class="tsc-label">Detail</label>
+                    <input type="text" id="detail" name="detail" placeholder="Detail">
+                    <label for="date" class="tsc-label">Date</label>
+                    <input type="date" id="date" name="date" placeholder="Date">
+                    <button type="submit" id="submit">Add</button>
+                </div>
+            </nav>
+        </div>
+        <div class="right-grid">
+            <div class="head-container">
+                <div class="header">
+                    <div class="header-card">
+                        <div class="label" id="balance">Total balance</div>
+                        <div id="totalBalance">IDR.</div>
+                        <div class="bottom-card">
+                            <div class="label" id="cardNumber">1234 5678 9101</div>
+                            <div class="card-icon">
+                                <img src="/icon-card.svg" alt="CardIcon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wraper">
+                    <div class="income-card">
+                        <div class="sub-label" id="income">Total Income</div>
+                        <div id="totalIncome">IDR.</div>
+                    </div>
+                    <div class="expense-card">
+                        <div class="sub-label" id="expense">Total Expense</div>
+                        <div id="totalExpense">IDR.</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="label-container">
+                <div class="label" id="lableTitle">Transaction History</div>
+                <!-- <select class="filter" id="tscFilter">
+                    <option value="all">All</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select> -->
+            </div>
+            <div class="transaction-list">
+                
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
