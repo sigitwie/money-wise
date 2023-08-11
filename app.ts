@@ -98,7 +98,7 @@ submitButton.addEventListener("click", async (event) => {
 
     try {
       const response = await fetch(
-        `https://moneywise.eswe.dev/transactions${editedTransaction.id}`,
+        `https://moneywise.eswe.dev/transactions/${editedTransaction.id}`,
         {
           method: "PUT",
           headers: {
