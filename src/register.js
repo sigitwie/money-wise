@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = formData.get('password');
 
         try {
-            const response = await fetch('http://moneywise.eswe.dev/register', {
+            const response = await fetch('https://moneywise.eswe.dev/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

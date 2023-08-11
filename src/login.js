@@ -13,7 +13,7 @@ async function handleLogin(event) {
     }
   
     try {
-      const response = await fetch('http://moneywise.eswe.dev/login', {
+      const response = await fetch('https://moneywise.eswe.dev/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

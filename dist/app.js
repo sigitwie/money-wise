@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -45,7 +46,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 // Get form elements
 var categorySelect = document.getElementById("category");
 var amountInput = document.querySelector('input[name="amount"]');
@@ -102,7 +102,7 @@ function fetchTransactions() {
 // Fetch transactions when the page loads
 fetchTransactions();
 // Event listener for form submission
-submitButton.addEventListener("click", function (event) { return __awaiter(_this, void 0, void 0, function () {
+submitButton.addEventListener("click", function (event) { return __awaiter(void 0, void 0, void 0, function () {
     var category, amount, detail, date, editedIndex, response, error_2, newTransaction, response, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -162,7 +162,7 @@ submitButton.addEventListener("click", function (event) { return __awaiter(_this
                 _a.label = 7;
             case 7:
                 _a.trys.push([7, 10, , 11]);
-                return [4 /*yield*/, fetch("http://localhost:5500/transactions", {
+                return [4 /*yield*/, fetch("https://moneywise.eswe.dev/transactions", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
