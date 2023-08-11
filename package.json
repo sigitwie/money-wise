@@ -4,7 +4,7 @@
   "description": "FinancialApp Tracker",
   "main": "dist/app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
