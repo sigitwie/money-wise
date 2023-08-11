@@ -125,7 +125,7 @@ submitButton.addEventListener("click", function (event) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch(`https://moneywise.eswe.dev/transactions/${transactionId}`, {
+                    return [4 /*yield*/, fetch("https://moneywise.eswe.dev/transactions/".concat(editedTransaction.id), {
                         method: "PUT",
                         headers: {
                             "Content-Type": "application/json",
