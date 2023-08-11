@@ -212,7 +212,7 @@ function createTransactionCard(transaction: Transaction): HTMLElement {
     const transactionId = transaction.id;
     try {
       const response = await fetch(
-        `https://moneywise.eswe.dev/transactions${transactionId}`,
+        `https://moneywise.eswe.dev/transactions/${transactionId}`,
         {
           method: "DELETE",
         }
