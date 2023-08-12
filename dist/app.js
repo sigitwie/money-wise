@@ -298,3 +298,36 @@ function clearFormInputs() {
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+// Function to check if the user is logged in
+function checkLoginStatus() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, error_5;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, fetch("https://moneywise.eswe.dev/login", {
+                            method: "GET",
+                            headers: {},
+                        })];
+                case 1:
+                    response = _a.sent();
+                    if (response.status === 200) {
+                    }
+                    else if (response.status === 401) {
+                        window.location.href = "/login.html"; // Alihkan ke halaman login
+                    }
+                    else {
+                    }
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_5 = _a.sent();
+                    console.error("Error checking login status:", error_5);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+// call the function to check login status when the page loads
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
