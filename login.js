@@ -24,7 +24,7 @@ async function handleLogin(event) {
       if (response.ok) {
         const data = await response.json();
         const accessToken = data.accessToken;
-        // Store the accessToken in localStorage or cookies
+
         // Redirect to dashboard page
         window.location.href = 'dashboard.html';
       } else {
