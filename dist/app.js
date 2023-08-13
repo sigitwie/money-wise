@@ -308,6 +308,7 @@ function checkLoginStatus() {
                     _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, fetch("https://moneywise.eswe.dev/dashboard", {
                             method: "GET",
+                            credentials: "include",
                             headers: {},
                         })];
                 case 1:

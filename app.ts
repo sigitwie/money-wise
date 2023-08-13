@@ -298,6 +298,7 @@ async function checkLoginStatus() {
   try {
     const response = await fetch("https://moneywise.eswe.dev/dashboard", {
       method: "GET",
+      credentials: "include",
       headers: {},
     });
 
