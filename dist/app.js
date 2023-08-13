@@ -306,7 +306,7 @@ function checkLoginStatus() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fetch("https://moneywise.eswe.dev/login", {
+                    return [4 /*yield*/, fetch("https://moneywise.eswe.dev/dashboard", {
                             method: "GET",
                             headers: {},
                         })];

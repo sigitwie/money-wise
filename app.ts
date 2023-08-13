@@ -297,7 +297,7 @@ function capitalizeFirstLetter(str: string): string {
 // Function to check if the user is logged in
 async function checkLoginStatus() {
   try {
-    const response = await fetch("https://moneywise.eswe.dev/login", {
+    const response = await fetch("https://moneywise.eswe.dev/dashboard", {
       method: "GET",
       headers: {
       },
