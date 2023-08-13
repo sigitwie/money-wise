@@ -301,11 +301,16 @@ function capitalizeFirstLetter(str) {
 // Function to check if the user is logged in
 function checkLoginStatus() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, error_5;
+        var token, response, error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
+                    token = getCookie("accessToken");
+                    if (token) {
+                        // User has a token, they are logged in
+                        return [2 /*return*/];
+                    }
                     return [4 /*yield*/, fetch("https://moneywise.eswe.dev/dashboard", {
                             method: "GET",
                             credentials: "include",
@@ -329,5 +334,13 @@ function checkLoginStatus() {
         });
     });
 }
-// call the function to check login status when the page loads
+// Get the value of a cookie
+function getCookie(name) {
+    var _a;
+    var value = "; ".concat(document.cookie);
+    var parts = value.split("; ".concat(name, "="));
+    if (parts.length === 2)
+        return (_a = parts.pop()) === null || _a === void 0 ? void 0 : _a.split(";").shift();
+}
+// Call the function to check login status when the page loads
 document.addEventListener("DOMContentLoaded", checkLoginStatus);

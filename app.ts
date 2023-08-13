@@ -296,6 +296,13 @@ function capitalizeFirstLetter(str: string): string {
 // Function to check if the user is logged in
 async function checkLoginStatus() {
   try {
+    const token = getCookie("accessToken"); // Get the access token from cookie
+
+    if (token) {
+      // User has a token, they are logged in
+      return;
+    }
+
     const response = await fetch("https://moneywise.eswe.dev/dashboard", {
       method: "GET",
       credentials: "include",
@@ -304,9 +311,7 @@ async function checkLoginStatus() {
 
     if (response.status === 200) {
       window.location.href = "/dashboard.html";
-    }
-
-    else if (response.status === 401) {
+    } else if (response.status === 401) {
       window.location.href = "/index.html";
     }
   } catch (error) {
@@ -314,5 +319,12 @@ async function checkLoginStatus() {
   }
 }
 
-// call the function to check login status when the page loads
+// Get the value of a cookie
+function getCookie(name: string): string | undefined {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift();
+}
+
+// Call the function to check login status when the page loads
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
