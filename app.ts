@@ -305,9 +305,8 @@ async function checkLoginStatus() {
       window.location.href = "/dashboard.html";
     }
 
-    if (response.status === 401) {
+    else if (response.status === 401) {
       window.location.href = "/index.html";
-    } else {
     }
   } catch (error) {
     console.error("Error checking login status:", error);

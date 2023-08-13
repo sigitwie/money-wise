@@ -315,10 +315,8 @@ function checkLoginStatus() {
                     if (response.status === 200) {
                         window.location.href = "/dashboard.html";
                     }
-                    if (response.status === 401) {
+                    else if (response.status === 401) {
                         window.location.href = "/index.html";
-                    }
-                    else {
                     }
                     return [3 /*break*/, 3];
                 case 2:
