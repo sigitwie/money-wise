@@ -305,7 +305,7 @@ async function checkLoginStatus() {
 
     if (response.status === 200) {
     } else if (response.status === 401) {
-      window.location.href = "/login.html"; // Alihkan ke halaman login
+      window.location.href = "/index.html"; // Alihkan ke halaman login
     } else {
   
     }
