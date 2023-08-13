@@ -313,9 +313,10 @@ function checkLoginStatus() {
                 case 1:
                     response = _a.sent();
                     if (response.status === 200) {
+                        window.location.href = "/dashboard.html";
                     }
-                    else if (response.status === 401) {
-                        window.location.href = "/index.html"; // Alihkan ke halaman login
+                    if (response.status === 401) {
+                        window.location.href = "/index.html";
                     }
                     else {
                     }

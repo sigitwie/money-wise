@@ -293,21 +293,21 @@ function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-
 // Function to check if the user is logged in
 async function checkLoginStatus() {
   try {
     const response = await fetch("https://moneywise.eswe.dev/dashboard", {
       method: "GET",
-      headers: {
-      },
+      headers: {},
     });
 
     if (response.status === 200) {
-    } else if (response.status === 401) {
-      window.location.href = "/index.html"; // Alihkan ke halaman login
+      window.location.href = "/dashboard.html";
+    }
+
+    if (response.status === 401) {
+      window.location.href = "/index.html";
     } else {
-  
     }
   } catch (error) {
     console.error("Error checking login status:", error);
