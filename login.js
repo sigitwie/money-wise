@@ -26,12 +26,20 @@ async function handleLogin(event) {
       const data = await response.json();
       const accessToken = data.accessToken;
 
+      // Save the accessToken in session storage
+      sessionStorage.setItem('accessToken', accessToken);
+
+      console.log('Login successful!');
+      console.log('Access Token:', accessToken);
+
       // Redirect to dashboard page
       window.location.href = 'dashboard.html';
     } else {
+      console.log('Login failed.');
       alert('Login failed. Please check your credentials.');
     }
   } catch (error) {
+    console.error('Login error:', error);
     alert('Login failed. Please check your credentials.');
   }
 }

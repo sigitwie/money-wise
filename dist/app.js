@@ -301,46 +301,49 @@ function capitalizeFirstLetter(str) {
 // Function to check if the user is logged in
 function checkLoginStatus() {
     return __awaiter(this, void 0, void 0, function () {
-        var token, response, error_5;
+        var accessToken, response, error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    token = getCookie("accessToken");
-                    if (token) {
-                        // User has a token, they are logged in
-                        return [2 /*return*/];
-                    }
-                    return [4 /*yield*/, fetch("https://moneywise.eswe.dev/dashboard", {
-                            method: "GET",
-                            credentials: "include",
-                            headers: {},
-                        })];
-                case 1:
+                    _a.trys.push([0, 4, , 5]);
+                    accessToken = sessionStorage.getItem('accessToken');
+                    if (!!accessToken) return [3 /*break*/, 1];
+                    // Alert and redirect immediately
+                    alert("You need to login to access the dashboard.");
+                    // Redirect to login
+                    window.location.href = "/index.html";
+                    return [3 /*break*/, 3];
+                case 1: return [4 /*yield*/, fetch("https://moneywise.eswe.dev/dashboard", {
+                        method: "GET",
+                        mode: "cors",
+                        credentials: "include",
+                        headers: {
+                            Authorization: "Bearer ".concat(accessToken), // Use the token from session storage
+                        },
+                    })];
+                case 2:
                     response = _a.sent();
                     if (response.status === 200) {
-                        window.location.href = "/dashboard.html";
+                        // Check if the user is not already on dashboard.html
+                        if (window.location.pathname !== "/dashboard.html") {
+                            // Redirect to dashboard.html if token is valid
+                            window.location.href = "/dashboard.html";
+                        }
                     }
                     else if (response.status === 401) {
+                        // Redirect to index.html if token is invalid
                         window.location.href = "/index.html";
                     }
-                    return [3 /*break*/, 3];
-                case 2:
+                    _a.label = 3;
+                case 3: return [3 /*break*/, 5];
+                case 4:
                     error_5 = _a.sent();
                     console.error("Error checking login status:", error_5);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
         });
     });
-}
-// Get the value of a cookie
-function getCookie(name) {
-    var _a;
-    var value = "; ".concat(document.cookie);
-    var parts = value.split("; ".concat(name, "="));
-    if (parts.length === 2)
-        return (_a = parts.pop()) === null || _a === void 0 ? void 0 : _a.split(";").shift();
 }
 // Call the function to check login status when the page loads
 document.addEventListener("DOMContentLoaded", checkLoginStatus);

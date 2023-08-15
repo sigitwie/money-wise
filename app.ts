@@ -296,34 +296,37 @@ function capitalizeFirstLetter(str: string): string {
 // Function to check if the user is logged in
 async function checkLoginStatus() {
   try {
-    const token = getCookie("accessToken"); // Get the access token from cookie
+    const accessToken = sessionStorage.getItem('accessToken'); // Get the token from session storage
 
-    if (token) {
-      // User has a token, they are logged in
-      return;
-    }
-
-    const response = await fetch("https://moneywise.eswe.dev/dashboard", {
-      method: "GET",
-      credentials: "include",
-      headers: {},
-    });
-
-    if (response.status === 200) {
-      window.location.href = "/dashboard.html";
-    } else if (response.status === 401) {
+    if (!accessToken) {
+      // Alert and redirect immediately
+      alert("You need to login to access the dashboard.");
+      // Redirect to login
       window.location.href = "/index.html";
+    } else {
+      const response = await fetch("https://moneywise.eswe.dev/dashboard", {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${accessToken}`, // Use the token from session storage
+        },
+      });
+
+      if (response.status === 200) {
+        // Check if the user is not already on dashboard.html
+        if (window.location.pathname !== "/dashboard.html") {
+          // Redirect to dashboard.html if token is valid
+          window.location.href = "/dashboard.html";
+        }
+      } else if (response.status === 401) {
+        // Redirect to index.html if token is invalid
+        window.location.href = "/index.html";
+      }
     }
   } catch (error) {
     console.error("Error checking login status:", error);
   }
-}
-
-// Get the value of a cookie
-function getCookie(name: string): string | undefined {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(";").shift();
 }
 
 // Call the function to check login status when the page loads
